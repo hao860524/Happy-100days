@@ -111,14 +111,7 @@ button:hover {
         逛插畫展🎨買買買🛍️<br>
         老人遊覽車行程👴👵🚌<br>
         吃浪漫鐵板燒🦞🍽️成功看到無人機煙火演出🎇<br>
-        <audio id="bgm" loop><source src="初恋.mp3" type="audio/mpeg"></audio>
-    <script>
-        document.addEventListener("click", () => {
-            const audio = document.getElementById("bgm");
-            audio.currentTime = 15;
-            audio.play();
-        }, { once: true });
-    </script>
+        <audio id="bgm" loop controls><source src="初恋.mp3" type="audio/mpeg"></audio>
         <br>
         這些和寶包的回憶都是好珍貴的寶物，謝謝寶包出現在我的生命裡。
     </h3>
@@ -181,6 +174,19 @@ function dropRose() {
     setTimeout(() => rose.remove(), 2000);
 }
 
+document.addEventListener("click", () => {
+    const audio = document.getElementById("bgm");
+    audio.currentTime = 15;
+    audio.volume = 0.5;
+    audio.play();
+}, { once: true });
+    
+window.onload = () => {
+    const audio = document.getElementById("bgm");
+    audio.play().catch(() => {
+    });
+};
+ 
 </script>
 </body>
 </html>
