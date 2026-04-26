@@ -37,7 +37,7 @@ h1 {
     font-size: 2.5em;
 }
 .progress {
-    width: 80%;
+    width: 90%;
     height: 10px;
     background: rgba(255,255,255,0.5);
     margin: 20px auto;
@@ -73,12 +73,12 @@ h1 {
 
 button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 20px 40px;
     border: none;
     border-radius: 20px;
     background: white;
     color: #ff6a88;
-    font-size: 1em;
+    font-size: 2em;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -89,15 +89,8 @@ button:hover {
 </head>
 
 <body>
-<div style="position:fixed; width:0; height:0; overflow:hidden;">
-    <iframe id="ytplayer"
-        src="https://www.youtube.com/embed/影片ID?autoplay=1&loop=1&playlist=影片ID"
-        frameborder="0"
-        allow="autoplay">
-    </iframe>
-</div>
 <div class="container">
-    <h1>❤️ 給最愛的寶包 ❤️</h1>
+    <h1>❤️ 給最愛的寶包💌 ❤️</h1>
     <h2 id="dayText"></h2>
 
     <div class="message" id="message"></div>
@@ -110,19 +103,18 @@ button:hover {
         去吹海風🌊唱日K🎵<br>
         逛插畫展🎨買買買🛍️<br>
         老人遊覽車行程👴👵🚌<br>
-        吃浪漫鐵板燒🦞🍽️成功看到無人機煙火演出🎇<br>
+        吃浪漫鐵板燒🦞🍽️成功看到煙火無人機🎇<br>
         <audio id="bgm" loop controls><source src="初恋.mp3" type="audio/mpeg"></audio>
         <br>
         這些和寶包的回憶都是好珍貴的寶物，謝謝寶包出現在我的生命裡。
     </h3>
     <button onclick="dropRose()">按我</button>
 </div>
-
 <script>
 
 const startDate = new Date("2026-01-17");
 const messages = [
-    "寶包開心我也開心 和寶包在一起的每一天都充滿心跳與驚喜",
+    "寶包開心我也開心💑🏻和寶包在一起的每一天都充滿心跳與驚喜💓",
 ];
 // =====================
 
@@ -177,7 +169,7 @@ function dropRose() {
 document.addEventListener("click", () => {
     const audio = document.getElementById("bgm");
     audio.currentTime = 15;
-    audio.volume = 0.5;
+    audio.volume = 0.2;
     audio.play();
 }, { once: true });
     
