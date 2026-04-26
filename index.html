@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100天快樂</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+    text-align: center;
+}
+.container {
+    padding: 40px 20px;
+}
+h1 {
+    font-size: 2.5em;
+}
+.progress {
+    width: 80%;
+    height: 20px;
+    background: rgba(255,255,255,0.3);
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    background: #fff;
+    width: 0%;
+    transition: width 1s;
+}
+.heart {
+    position: fixed;
+    color: red;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+.message {
+    margin-top: 30px;
+    font-size: 1.2em;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>❤️ 給我最愛的妳 ❤️</h1>
+    <h2 id="dayText"></h2>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+// ====== 可修改區 ======
+const startDate = new Date("2026-01-01"); // 改成你們的開始日
+const totalDays = 100;
+
+const messages = [
+    "和妳在一起的每一天都很值得",
+    "今天也想妳",
+    "謝謝妳出現在我的生活裡",
+    "妳笑的時候真的很好看",
+    "我會一直陪著妳",
+];
+// =====================
+
+const today = new Date();
+const diffTime = today - startDate;
+const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+let day = Math.min(currentDay, totalDays);
+let percent = (day / totalDays) * 100;
+
+document.getElementById("dayText").innerText =
+    `我們已經一起走到第 ${day} / ${totalDays} 天 💕`;
+
+document.getElementById("progressBar").style.width = percent + "%";
+
+// 每日一句
+document.getElementById("message").innerText =
+    messages[day % messages.length];
+
+// 愛心動畫
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.innerText = "❤️";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+</body>
+</html>
