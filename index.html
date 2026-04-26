@@ -148,7 +148,13 @@ setInterval(() => {
 }, 500);
 
 let firstRose = true;
+let roseCount = 0;
 function dropRose() {
+    roseCount++;
+    if (roseCount >= 10) {
+        roseCount = 0;
+        firstRose = true;
+    }
     const rose = document.createElement("div");
     rose.innerText = "🌹";
     rose.style.position = "fixed";
@@ -157,7 +163,7 @@ function dropRose() {
     if (firstRose) {
         rose.style.left = "50%";
         rose.style.transform = "translateX(-50%)";
-        rose.style.fontSize = "100px";
+        rose.style.fontSize = "120px";
         firstRose = false;
     } else {
         rose.style.left = Math.random() * 100 + "vw";
