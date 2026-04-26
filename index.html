@@ -31,7 +31,7 @@ h1 {
 .progress {
     width: 80%;
     height: 10px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.8);
     margin: 20px auto;
     border-radius: 10px;
     overflow: hidden;
@@ -59,10 +59,7 @@ h1 {
         transform: translateY(100vh);
     }
 }
-@keyframes pop {
-    0% { transform: translateX(-50%) scale(0); }
-    100% { transform: translateX(-50%) scale(1); }
-}
+
     
 .message {
     margin-top: 30px;
@@ -141,7 +138,7 @@ bar.style.width = "0%";
 
 setTimeout(() => {
     bar.style.transition = "width 2.5s ease-out";
-    bar.style.width = percent + "%";
+    bar.style.width = 100 + "%";
 }, 500);
 
 setInterval(() => {
