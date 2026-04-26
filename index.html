@@ -21,6 +21,14 @@ body::before {
     opacity: 0.08;
     z-index: -1;
 }
+@keyframes fallEmoji {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+}
     
 .container {
     padding: 40px 20px;
@@ -37,7 +45,6 @@ h1 {
     overflow: hidden;
 }
 .progress-bar { height: 100%; background: #fff; width: 0%; transition: width 1s; }
-
 @keyframes move {
     from { background-position: 0 0; }
     to { background-position: 40px 0; }
@@ -78,16 +85,8 @@ button {
 button:hover {
     transform: scale(1.1);
 }
+    
 
-
-@keyframes fallEmoji {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(100vh);
-    }
-}
 </style>
 </head>
 
@@ -114,6 +113,7 @@ button:hover {
         逛插畫展🎨買買買🛍️<br>
         老人遊覽車行程👴👵🚌<br>
         吃浪漫鐵板燒🦞🍽️成功看到無人機煙火演出🎇<br>
+        <audio id="bgm" src="茉ひる-Veil.mp3" controls></audio>
         這些和寶包的回憶都是好珍貴的寶物，謝謝寶包出現在我的生命裡。
     </h3>
     <button onclick="dropRose()">按我</button>
@@ -159,14 +159,12 @@ setInterval(() => {
 }, 300);
     
 let firstRose = true;
-
 function dropRose() {
     const rose = document.createElement("div");
     rose.innerText = "🌹";
     rose.style.position = "fixed";
     rose.style.top = "-20px";
     rose.style.animation = "fallEmoji 2s linear, pop 0.5s ease";
-
     if (firstRose) {
         rose.style.left = "50%";
         rose.style.transform = "translateX(-50%)";
@@ -176,9 +174,7 @@ function dropRose() {
         rose.style.left = Math.random() * 100 + "vw";
         rose.style.fontSize = "50px";
     }
-    
     document.body.appendChild(rose);
-
     setTimeout(() => rose.remove(), 2000);
 }
 </script>
