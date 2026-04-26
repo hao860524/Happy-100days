@@ -38,14 +38,9 @@ h1 {
 }
 .progress-bar {
     height: 100%;
-    background: repeating-linear-gradient(
-        45deg,
-        #fff,
-        #fff 10px,
-        #ffd1dc 10px,
-        #ffd1dc 20px
-    );
-    animation: move 1s linear infinite;
+    background: linear-gradient(90deg, #ff6a88, #ff99ac);
+    width: 0%;
+    transition: width 1s;
 }
 
 @keyframes move {
@@ -105,24 +100,22 @@ h1 {
     </div>
 
     <div class="message" id="message"></div>
-
-    <div class="story">
-        今年的生活寶包陪我到處趴趴走，生活多了很多色彩，也多了很多色色。<br>
-        我們去看了線條小狗、去酒吧、還來接我機、去吹海風、唱日K、插畫展、<br>
-        老人遊覽車行程、吃浪漫鐵板燒、成功看到無人機煙火演出。<br><br>
-        這些和寶包的共同回憶，都是珍貴的寶物。
-    </div>
+    <h3>今年的生活寶包陪我到處趴趴走，生活多了很多色彩，也多了很多色色((。</h3>
+    <h3>我們去看了線條小狗<br>
+        去酒吧、還來接我機<br>
+        去吹海風唱日K<br>
+        逛插畫展買買買<br>
+        老人遊覽車行程<br>
+        吃浪漫鐵板燒、成功看到無人機煙火演出。<br>
+        這些和寶包的回憶都是好珍貴的寶物。
+    </h3>h3>
 </div>
 
 <script>
 
-const startDate = new Date("2026-01-01");
-
-
+const startDate = new Date("2026-01-17");
 const messages = [
-    "看寶包開心我也開心",
-    "和寶包在一起的每一天都充滿心跳與驚喜",
-    "謝謝寶包出現在我的生命裡",
+    "和寶包在一起的每一天都充滿心跳與驚喜\n 看寶包開心我也開心\n 謝謝寶包出現在我的生命裡",
 ];
 // =====================
 
@@ -138,7 +131,7 @@ document.getElementById("dayText").innerText =
 document.getElementById("progressBar").style.width =  100 + "%";
 
 document.getElementById("message").innerText =
-    messages[day % messages.length];
+    messages[0];
 
 setInterval(() => {
     const heart = document.createElement("div");
