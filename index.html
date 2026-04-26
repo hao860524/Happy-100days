@@ -73,12 +73,12 @@ h1 {
 
 button {
     margin-top: 20px;
-    padding: 15px 35px;
+    padding: 12px 30px;
     border: none;
     border-radius: 20px;
     background: white;
     color: #ff6a88;
-    font-size: 2em;
+    font-size: 2.5em;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -90,7 +90,7 @@ button:hover {
 
 <body>
 <div class="container">
-    <h1>❤️ 給最愛的寶包 ❤️<br>💌</h1>
+    <h1>❤️ 給最愛的寶包 ❤️</h1>
     <h2 id="dayText"></h2>
 
     <div class="message" id="message"></div>
@@ -124,7 +124,7 @@ const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
 let day = currentDay
 document.getElementById("dayText").innerText =
-    `我們一起走到了第 ${day} 天 💕`;
+    `我們一起走到了第 ${day} 天💕💌`;
 document.getElementById("message").innerText =
     messages[0];
     
@@ -140,7 +140,7 @@ setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    heart.style.fontSize = (Math.random() * 25 + 20) + "px";
     heart.innerText = "❤️";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5000);
