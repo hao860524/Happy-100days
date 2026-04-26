@@ -12,6 +12,16 @@ body {
     color: white;
     text-align: center;
 }
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/rose.png');
+    opacity: 0.08;
+    z-index: -1;
+}
+    
 .container {
     padding: 40px 20px;
 }
@@ -28,9 +38,19 @@ h1 {
 }
 .progress-bar {
     height: 100%;
-    background: #fff;
-    width: 0%;
-    transition: width 1s;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 10px,
+        #ffd1dc 10px,
+        #ffd1dc 20px
+    );
+    animation: move 1s linear infinite;
+}
+
+@keyframes move {
+    from { background-position: 0 0; }
+    to { background-position: 40px 0; }
 }
 .heart {
     position: fixed;
@@ -41,16 +61,43 @@ h1 {
     from {transform: translateY(100vh);}
     to {transform: translateY(-10vh);}
 }
+
+.rose {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/616/616494.png');
+    background-size: cover;
+    pointer-events: none;
+    animation: fall 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+    
 .message {
     margin-top: 30px;
     font-size: 1.2em;
+}
+.story {
+    margin-top: 30px;
+    font-size: 1.1em;
+    line-height: 1.8;
+    padding: 0 20px;
 }
 </style>
 </head>
 
 <body>
 <div class="container">
-    <h1>❤️ 給我最愛的妳 ❤️</h1>
+    <h1>❤️ 給最愛的寶包 ❤️</h1>
     <h2 id="dayText"></h2>
 
     <div class="progress">
@@ -58,19 +105,24 @@ h1 {
     </div>
 
     <div class="message" id="message"></div>
+
+    <div class="story">
+        今年的生活寶包陪我到處趴趴走，生活多了很多色彩，也多了很多色色。<br>
+        我們去看了線條小狗、去酒吧、還來接我機、去吹海風、唱日K、插畫展、<br>
+        老人遊覽車行程、吃浪漫鐵板燒、成功看到無人機煙火演出。<br><br>
+        這些和寶包的共同回憶，都是珍貴的寶物。
+    </div>
 </div>
 
 <script>
-// ====== 可修改區 ======
-const startDate = new Date("2026-01-01"); // 改成你們的開始日
-const totalDays = 100;
+
+const startDate = new Date("2026-01-01");
+
 
 const messages = [
-    "和妳在一起的每一天都很值得",
-    "今天也想妳",
-    "謝謝妳出現在我的生活裡",
-    "妳笑的時候真的很好看",
-    "我會一直陪著妳",
+    "看寶包開心我也開心",
+    "和寶包在一起的每一天都充滿心跳與驚喜",
+    "謝謝寶包出現在我的生命裡",
 ];
 // =====================
 
@@ -78,19 +130,16 @@ const today = new Date();
 const diffTime = today - startDate;
 const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-let day = Math.min(currentDay, totalDays);
-let percent = (day / totalDays) * 100;
+let day = currentDay
 
 document.getElementById("dayText").innerText =
-    `我們已經一起走到第 ${day} / ${totalDays} 天 💕`;
+    `我們已經一起走到第 ${day} 天 💕`;
 
-document.getElementById("progressBar").style.width = percent + "%";
+document.getElementById("progressBar").style.width =  100 + "%";
 
-// 每日一句
 document.getElementById("message").innerText =
     messages[day % messages.length];
 
-// 愛心動畫
 setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
