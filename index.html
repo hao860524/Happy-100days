@@ -85,8 +85,6 @@ button {
 button:hover {
     transform: scale(1.1);
 }
-    
-
 </style>
 </head>
 
@@ -113,7 +111,15 @@ button:hover {
         逛插畫展🎨買買買🛍️<br>
         老人遊覽車行程👴👵🚌<br>
         吃浪漫鐵板燒🦞🍽️成功看到無人機煙火演出🎇<br>
-        <audio id="bgm" src="茉ひる-Veil.mp3" controls></audio>
+        <audio id="bgm" loop><source src="your-song.mp3" type="audio/mpeg"></audio>
+    <script>
+        document.addEventListener("click", () => {
+            const audio = document.getElementById("bgm");
+            audio.currentTime = 15;
+            audio.play();
+        }, { once: true });
+    </script>
+        <br>
         這些和寶包的回憶都是好珍貴的寶物，謝謝寶包出現在我的生命裡。
     </h3>
     <button onclick="dropRose()">按我</button>
@@ -132,13 +138,10 @@ const diffTime = today - startDate;
 const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
 let day = currentDay
-
 document.getElementById("dayText").innerText =
     `我們一起走到了第 ${day} 天 💕`;
-
 document.getElementById("message").innerText =
     messages[0];
-
     
 const bar = document.getElementById("progressBar");
 bar.style.width = "0%";
@@ -158,25 +161,7 @@ setInterval(() => {
     setTimeout(() => heart.remove(), 5000);
 }, 300);
     
-let firstRose = true;
-function dropRose() {
-    const rose = document.createElement("div");
-    rose.innerText = "🌹";
-    rose.style.position = "fixed";
-    rose.style.top = "-20px";
-    rose.style.animation = "fallEmoji 2s linear, pop 0.5s ease";
-    if (firstRose) {
-        rose.style.left = "50%";
-        rose.style.transform = "translateX(-50%)";
-        rose.style.fontSize = "100px";
-        firstRose = false;
-    } else {
-        rose.style.left = Math.random() * 100 + "vw";
-        rose.style.fontSize = "50px";
-    }
-    document.body.appendChild(rose);
-    setTimeout(() => rose.remove(), 2000);
-}
+
 </script>
 </body>
 </html>
