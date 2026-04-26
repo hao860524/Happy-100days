@@ -59,6 +59,10 @@ h1 {
         transform: translateY(100vh);
     }
 }
+@keyframes pop {
+    0% { transform: translateX(-50%) scale(0); }
+    100% { transform: translateX(-50%) scale(1); }
+}
     
 .message {
     margin-top: 30px;
@@ -131,7 +135,14 @@ document.getElementById("dayText").innerText =
 document.getElementById("message").innerText =
     messages[0];
 
-document.getElementById("progressBar").style.width =  100 + "%";
+    
+const bar = document.getElementById("progressBar");
+bar.style.width = "0%";
+
+setTimeout(() => {
+    bar.style.transition = "width 2.5s ease-out";
+    bar.style.width = percent + "%";
+}, 500);
 
 setInterval(() => {
     const heart = document.createElement("div");
@@ -150,19 +161,18 @@ function dropRose() {
     rose.innerText = "🌹";
     rose.style.position = "fixed";
     rose.style.top = "-20px";
-    rose.style.animation = "fallEmoji 4s linear";
+    rose.style.animation = "fallEmoji 4s linear, pop 0.5s ease";
 
     if (firstRose) {
-        // 第一朵：中間 + 放大
         rose.style.left = "50%";
         rose.style.transform = "translateX(-50%)";
-        rose.style.fontSize = "60px";
+        rose.style.fontSize = "100px";
         firstRose = false;
     } else {
-        // 其他：隨機
         rose.style.left = Math.random() * 100 + "vw";
-        rose.style.fontSize = "30px";
+        rose.style.fontSize = "50px";
     }
+    
 
     document.body.appendChild(rose);
 
