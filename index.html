@@ -36,12 +36,7 @@ h1 {
     border-radius: 10px;
     overflow: hidden;
 }
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #ff6a88, #ff99ac);
-    width: 0%;
-    transition: width 1s;
-}
+.progress-bar { height: 100%; background: #fff; width: 0%; transition: width 1s; }
 
 @keyframes move {
     from { background-position: 0 0; }
@@ -56,24 +51,12 @@ h1 {
     from {transform: translateY(100vh);}
     to {transform: translateY(-10vh);}
 }
-
-.rose {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/616/616494.png');
-    background-size: cover;
-    pointer-events: none;
-    animation: fall 6s linear infinite;
-    opacity: 0.8;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh) rotate(0deg);
+@keyframes fallEmoji {
+    from {
+        transform: translateY(0);
     }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
+    to {
+        transform: translateY(100vh);
     }
 }
     
@@ -86,6 +69,22 @@ h1 {
     font-size: 1.1em;
     line-height: 1.8;
     padding: 0 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff6a88;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 </style>
 </head>
@@ -100,7 +99,7 @@ h1 {
     </div>
 
     <div class="message" id="message"></div>
-    <h3>今年的生活寶包陪我到處趴趴走，生活多了很多色彩，也多了很多色色((。</h3>
+    <h3>今年的生活寶包陪我到處趴趴走，生活多了很多色彩，也多了很多色色((</h3>
     <h3>我們去看了線條小狗<br>
         去酒吧、還來接我機<br>
         去吹海風唱日K<br>
@@ -108,7 +107,8 @@ h1 {
         老人遊覽車行程<br>
         吃浪漫鐵板燒、成功看到無人機煙火演出。<br>
         這些和寶包的回憶都是好珍貴的寶物。
-    </h3>h3>
+    </h3>
+    <button onclick="dropRose()">按我</button>
 </div>
 
 <script>
@@ -128,10 +128,10 @@ let day = currentDay
 document.getElementById("dayText").innerText =
     `我們已經一起走到第 ${day} 天 💕`;
 
-document.getElementById("progressBar").style.width =  100 + "%";
-
 document.getElementById("message").innerText =
     messages[0];
+
+document.getElementById("progressBar").style.width =  100 + "%";
 
 setInterval(() => {
     const heart = document.createElement("div");
@@ -143,6 +143,31 @@ setInterval(() => {
 
     setTimeout(() => heart.remove(), 5000);
 }, 300);
+let firstRose = true;
+
+function dropRose() {
+    const rose = document.createElement("div");
+    rose.innerText = "🌹";
+    rose.style.position = "fixed";
+    rose.style.top = "-20px";
+    rose.style.animation = "fallEmoji 4s linear";
+
+    if (firstRose) {
+        // 第一朵：中間 + 放大
+        rose.style.left = "50%";
+        rose.style.transform = "translateX(-50%)";
+        rose.style.fontSize = "60px";
+        firstRose = false;
+    } else {
+        // 其他：隨機
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.fontSize = "30px";
+    }
+
+    document.body.appendChild(rose);
+
+    setTimeout(() => rose.remove(), 4000);
+}
 </script>
 </body>
 </html>
