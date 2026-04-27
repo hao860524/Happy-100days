@@ -121,7 +121,7 @@ const messages = [
 
 const today = new Date();
 const diffTime = today - startDate;
-const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+const currentDay = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
 let day = currentDay
 document.getElementById("dayText").innerText =
